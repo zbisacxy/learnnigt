@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<body>
+<div class="row small-post-sec">
+
+
+<section class="main-sec">
+        <div class="container">
+            <div class="standard-post-format">
+                <div class="row">
+                    <div class="col-md-12">
+                    </div>
+                </div>
+                <div class="row small-post-sec">
+
+                    <!---博客内容--->
+                        {% for image in image_list %}
+                            <div class="col-md-6 col-sm-6">
+
+                            <div class="post-item small-post">
+                                <img src="{{ image.image }}" alt="post-img">
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                {% if pIndex > min %}
+                        <a href="{{ next_dump }}"><font color="black">上一页</font></a>
+                {% endif %}
+                <p>&nbsp</p>
+                {% for foo in list_count %}
+                    <p>&nbsp</p>
+                        <a href="{{ foo }}" class="font-fenye"><font size="4" color="black">{{ foo }}</font></a>
+                    <p>&nbsp</p>
+                {% endfor %}
+                <p>&nbsp</p>
+                {% if pIndex < max %}
+                    <a href="{{ next_down }}"><font color="black">下一页</font></a>
+                {% endif %}
+
+
+                    <!---结束博客--->
+                </div>
+            </div>
+        </div>
+        <hr>
+
+    </section>
+
+{% endblock %}
+</div>
+</body>
+

@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <!-- Banner Sec -->
+    <section class="banner-sec" style="background:url(./../static/images/home-banner.jpg)no-repeat;">
+        <div class="container">
+            <div class="banner-content">
+                <h1>Welcome！</h1>
+                <h4>这里可Your Email以Get到你想要的各种Image</h4>
+                <a href="blog.html" class="btn more-btn">开始吧~</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main body sec -->
+
+    <section class="main-sec">
+        <div class="container">
+            <div class="standard-post-format">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Big post section -->
+                        <div class="post-item big-post">
+                            <h2>仙气十足~</h2>
+                            <img src="../static/images/post1.jpg" alt="post-img">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">November 20, 2019</li>
+                                <li class="breadcrumb-item"> By <a href="#" class="admin">Admin</a></li>
+                            </ol>
+                            <h5>This fairy looks great in a white skirt!</h5>
+                            <a href="blog.html" class="continue-read">Continue Reading</a>
+                            <div class="share align-middle">
+                                <span class="text">Share This</span>
+                                <span class="fb"><i class="fa fa-facebook-official"></i></span>
+                                <span class="instagram"><i class="fa fa-instagram"></i></span>
+                                <span class="twitter"><i class="fa fa-twitter"></i></span>
+                                <span class="pinterest"><i class="fa fa-pinterest"></i></span>
+                                <span class="google"><i class="fa fa-google-plus"></i></span>
+                                <span class="google"><i class="fa fa-commenting"></i></span>
+                            </div>
+                        </div>
+                        <!-- End Big post section -->
+                    </div>
+                </div>
+                <div class="row small-post-sec">
+
+
+
+
+                    <!---博客内容--->
+
+                    {% for blog in blog_list %}
+                        <div class="col-md-6 col-sm-6">
+
+                        <div class="post-item small-post">
+                            <img src="../static/images/{{ blog.cover }}" alt="post-img">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">{{ blog.pub_date }}</li>
+                                <li class="breadcrumb-item"> By <a href="#" class="">{{ blog.user }}</a></li>
+                            </ol>
+
+                                <h2><a href="../list/{{ blog.category_id }}/1">{{ blog.title }}</a></h2>
+                                <h5>
+                           {{ blog.content }}
+                        </h5>
+                            <div class="share align-middle">
+                                <span class="fb"><i class="fa fa-facebook-official"></i></span>
+                                <span class="instagram"><i class="fa fa-instagram"></i></span>
+                                <span class="twitter"><i class="fa fa-twitter"></i></span>
+                                <span class="pinterest"><i class="fa fa-pinterest"></i></span>
+                                <span class="google"><i class="fa fa-google-plus"></i></span>
+                                <span class="google"><i class="fa fa-commenting"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <!---结束博客--->
+
+
+
+
+                </div><div class="button-sec">
+                    <button class="btn load-more">load more</button>
+                </div>
+            </div>
+            <div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >网站建设</a></div>
+
+            <!-- Aside section start -->
+            <aside>
+                <div class="about-sec">
+                    <h3>I want say:</h3>
+                    {% for some in some_list %}
+                    <figure>
+                        <img src="../static/images/{{ some.head_image }}" alt="profile">
+                    </figure>
+                    <h5>{{ some.Zwjs }}</h5>
+                    <a href="about.html" class="read-more">Read More About Myself</a>
+                    <div class="share align-middle">
+                        <span class="fb"><i class="fa fa-facebook-official"></i></span>
+                        <span class="instagram"><i class="fa fa-instagram"></i></span>
+                        <span class="twitter"><i class="fa fa-twitter"></i></span>
+                        <span class="pinterest"><i class="fa fa-pinterest"></i></span>
+                        <span class="google"><i class="fa fa-google-plus"></i></span>
+                    </div>
+                </div>
+                    {% endfor %}
+                <div class="category-sec">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#" class="active">Photography</a></li>
+                        <li><a href="#">At & Lifestyle</a></li>
+                        <li><a href="#">Health & Fitness</a></li>
+                        <li><a href="#">Landscapes</a></li>
+                        <li><a href="#">Travelling</a></li>
+                        <li><a href="#">Quotes</a></li>
+                        <li><a href="#">Music</a></li>
+                        <li><a href="#">Featured</a></li>
+                        <li><a href="#">Photography</a></li>
+                    </ul>
+                </div>
+                <div class="most-read">
+                    <h3>Most Read</h3>
+                    {% for blog in blog_list %}
+                    <ul>
+                        <li>
+                            <figure style="background:url(../static/images/{{ blog.cover }})no-repeat;"></figure>
+                            <div class="post-content">
+                                <h3><a href="#">{{ blog.content }}</a></h3>
+                                <h5>{{ blog.pub_date }} </h5>
+                                <span>By <a href="#">{{ blog.user }}</a></span>
+                            </div>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </div>
+<!-- facebook like section -->
+                <div class="fb-sec">
+                    <iframe src="#/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftemplate.net%2F&tabs&width=330&height=214&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId" width="100%" height="214" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                </div>
+<!-- Tag section -->
+                <div class="tag-sec">
+                    <!---友情链接--->
+                    <h3>FriendLink</h3>
+                    {% for friend in friend_link_list %}
+                    <ul>
+                        <li><a href="{{ friend.link }} " target="_blank" class="sky-blue">{{ friend.name }}</a></li>
+                    </ul>
+                    {% endfor %}
+                </div>
+<!-- Twitter feed section -->
+                <div class="twitter-feed">
+                    <h3>客户们请说</h3>
+                    <ul>
+                        <li>
+                            <blockquote>
+                                {% for comment in comment_list%}
+                                <a href="#" class="author">@{{ comment.user }}:</a> "{{ comment.comment }}"
+                                {% endfor %}
+                            </blockquote>
+                        </li>
+                    </ul>
+                    <span class="twitter-follow">跟我走 <i class="fa fa-twitter"></i></span>
+                </div>
+            </aside>
+        </div>
+    </section>
+<!-- Subscribe section -->
+    <section class="subscribe-sec" style="background:url(./../static/images/subscribe.jpg" )no-repeat;>
+        <div class="cover"></div>
+        <div class="container">
+            <h5>The wind can't blow away the traces of your past 🐾</h5>
+            <p></p>
+            <h5></h5>
+            <div class="form">
+                <form action="/Comment_In/" method="post" >
+                    {% if message %}
+                    <div><font color="white">{{ message }}</font></div>
+                    {% endif %}
+                    {% csrf_token %}
+                    <input type="text" placeholder="Your Name" required name = 'user'>
+                    <input type="text" placeholder="留下您宝贵的评价" required name ='comment'>
+{#                    <input type="email" placeholder="Your Email" required>#}
+                    <button class="btn submit-btn" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+<!-- Popular posts section -->
+    <section class="popular-posts">
+        <div class="row">
+           {% for bottom in bottom_list %}
+                    <div class="col-md-2 col-sm-4 twt-post">
+
+                        <img src="{{ bottom.image }}" alt="t1">
+                        <div class="hover-effect">
+                            <div class="content">
+                                <h4>Follow Us</h4>
+                                <span><i class="fa fa-instagram"></i></span>
+                            </div>
+                        </div>
+
+                    </div>
+            {% endfor %}
+        {% endblock %}
+        </div>
+    </section>
+
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/custom.js"></script>
+
+</body>
+
+</html>
